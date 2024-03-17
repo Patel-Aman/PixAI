@@ -11,6 +11,7 @@ export async function createUser(user: CreateUserParams) {
         await connectToDatabase();
 
         const newUser = await User.create(user);
+        console.log("Success")
 
         return JSON.parse(JSON.stringify(newUser));
     } catch (error) {
@@ -43,9 +44,11 @@ export async function updateUser(clerkId: string, user: UpdateUserParams) {
         });
 
         if(!updatedUser) throw new Error("User updation failed");
+        console.log("updated");
 
         return JSON.parse(JSON.stringify(updatedUser));
     } catch (error) {
+        console.log("hello");
         handleError(error);
     }
 }
