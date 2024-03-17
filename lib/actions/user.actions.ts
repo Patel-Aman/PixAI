@@ -7,14 +7,17 @@ import { handleError } from "../utils";
 
 // create user
 export async function createUser(user: CreateUserParams) {
+    console.log("started creation")
     try {
         await connectToDatabase();
 
         const newUser = await User.create(user);
-        console.log("Success")
+        console.log(newUser);
+        console.log("finished");
 
         return JSON.parse(JSON.stringify(newUser));
     } catch (error) {
+        console.log("failed");
         handleError(error);
     }
 }
@@ -61,7 +64,7 @@ export async function deleteUser(clerkId: string) {
         // find user
         const userToDelete = await User.findOne({clerkId});
 
-        if(!userToDelete) throw new Error("User does ot exist");
+        if(!userToDelete) throw new Error("User does not exist");
 
         // delete user
         const deletedUser = await User.findByIdAndDelete(userToDelete._id);
