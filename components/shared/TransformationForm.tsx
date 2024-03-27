@@ -1,6 +1,6 @@
 "use client"
 
-import { aspectRatioOptions, creditFee, defaultValues, transformationTypes } from "@/contants";
+import { aspectRatioOptions, creditFee, defaultValues, transformationTypes } from "@/constants";
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import {z} from "zod";
